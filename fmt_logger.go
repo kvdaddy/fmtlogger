@@ -16,6 +16,11 @@ type fmtEncoder struct {
 	buf bytes.Buffer
 }
 
+func (e *fmtEncoder) Reset() {
+	e.Encoder.Reset()
+	e.buf.Reset()
+}
+
 var fmtEncoderPool = sync.Pool{
 	New:func() interface{}{
 		var enc fmtEncoder
